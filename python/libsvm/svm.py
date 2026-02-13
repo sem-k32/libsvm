@@ -131,11 +131,11 @@ def gen_svm_nodearray(xi, feature_max=None, isKernel=False):
         # since xi=(indices, values), we must sort them simultaneously.
         for idx, arg in enumerate(np.argsort(index_range)):
             ret[idx].index = index_range[arg]
-            ret[idx].value = (xi[1])[arg]
+            ret[idx].value = (xi[1])[arg].item()
     else:
         for idx, j in enumerate(index_range):
             ret[idx].index = j
-            ret[idx].value = xi[j - xi_shift]
+            ret[idx].value = xi[j - xi_shift].item()
 
     max_idx = 0
     if len(index_range) > 0:
